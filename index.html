@@ -5,12 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZubayGames - Premium Game Store</title>
   
-  <link rel="icon" type="image/png" href="zgs-logo.png">
+  <link class="rounded-full" rel="icon" type="image/png" href="zgs-logo.png">
   
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body class="bg-[#0b111e] text-white font-sans overflow-hidden" id="main-body">
+
+  <div id="construction-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-[200] flex items-center justify-center p-4 animate-fade-in">
+    <div class="bg-[#111827] border-2 border-yellow-500/30 w-full max-w-sm p-6 rounded-2xl shadow-2xl text-center relative">
+      <div class="text-4xl mb-3 animate-bounce">🚧</div>
+      <h3 class="text-xl font-black text-yellow-400 tracking-wide uppercase">Under Construction</h3>
+      <p class="text-gray-400 text-xs mt-2 leading-relaxed">
+        We are upgrading ZubayGames to bring you the best experience. Some features might be temporarily unavailable.
+      </p>
+      <div class="mt-4 bg-yellow-500/10 border border-yellow-500/20 py-1.5 px-3 rounded-lg text-[10px] text-yellow-500 font-semibold inline-block uppercase tracking-wider">
+        Loop Active: Re-opening every 20s
+      </div>
+      <button onclick="closeConstructionModal()" class="mt-5 w-full bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 text-black font-bold py-2 rounded-xl transition text-xs uppercase tracking-wider cursor-pointer shadow-lg shadow-yellow-500/20">
+        Understood & Close
+      </button>
+    </div>
+  </div>
 
   <div id="login-modal" class="fixed inset-0 bg-[#0b111e]/80 backdrop-blur-xl z-[100] flex items-center justify-center p-4">
     <div class="bg-[#0f172a] border border-gray-800 w-full max-w-md p-8 rounded-2xl shadow-2xl space-y-6 text-center relative">
@@ -19,38 +35,20 @@
         ✕
       </button>
 
-      <div>
+      <div class="space-y-2">
         <h2 class="text-3xl font-black text-cyan-400 tracking-wider uppercase">Zubay<span class="text-white">Games</span></h2>
-        <p class="text-gray-400 text-xs mt-2">Please login to access the store and check your orders</p>
+        <p class="text-gray-400 text-xs">Please sign in to access the store and check your orders</p>
       </div>
 
-      <form onsubmit="handleManualLogin(event)" class="space-y-4 text-left">
-        <div>
-          <label class="text-xs font-bold text-gray-400 uppercase">Email Address</label>
-          <input type="email" required id="login-email" placeholder="name@example.com" class="w-full bg-[#1e293b] border border-gray-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cyan-500 mt-1">
-        </div>
-        <div>
-          <label class="text-xs font-bold text-gray-400 uppercase">Password</label>
-          <input type="password" required id="login-pass" placeholder="••••••••" class="w-full bg-[#1e293b] border border-gray-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cyan-500 mt-1">
-        </div>
-        <button type="submit" class="w-full bg-cyan-500 hover:bg-cyan-600 text-black font-bold py-3 rounded-xl transition text-sm cursor-pointer shadow-lg shadow-cyan-500/20">
-          Sign In Manually
-        </button>
-      </form>
-
-      <div class="relative flex py-2 items-center text-gray-600">
-        <div class="flex-grow border-t border-gray-800"></div>
-        <span class="flex-shrink mx-4 text-xs uppercase font-bold text-gray-500">Or Continue With</span>
-        <div class="flex-grow border-t border-gray-800"></div>
-      </div>
-
-      <div class="flex justify-center">
+      <div class="flex flex-col items-center justify-center py-4 bg-[#131b2e] border border-gray-800/60 rounded-xl p-4">
         <div id="g_id_onload"
              data-client_id="553436437827-hdp6q3siq48d3peq4090bssvjroqtbkr.apps.googleusercontent.com"
              data-callback="handleCredentialResponse">
         </div>
         <div class="g_id_signin" data-type="standard" data-theme="dark" data-size="large" data-text="signin_with" data-shape="rectangular"></div>
       </div>
+
+      <p class="text-[10px] text-gray-500 font-medium">By signing in you agree to secure authentication standards.</p>
     </div>
   </div>
 
@@ -197,6 +195,21 @@
   </div>
 
   <script>
+    // --- RECURRING UNDER CONSTRUCTION POP-UP LOGIC ---
+    let constructionInterval;
+
+    function startConstructionLoop() {
+      // Har 20 seconds (20000 ms) baad modal show karega
+      constructionInterval = setInterval(() => {
+        document.getElementById('construction-modal').classList.remove('hidden');
+      }, 20000);
+    }
+
+    function closeConstructionModal() {
+      document.getElementById('construction-modal').classList.add('hidden');
+    }
+
+    // --- EXISTING APPLICATION LOGIC ---
     document.addEventListener("DOMContentLoaded", function() {
       const savedUser = localStorage.getItem("isLoggedIn");
       const savedName = localStorage.getItem("userName");
@@ -207,6 +220,9 @@
       } else {
         document.getElementById('login-modal').classList.remove('hidden');
       }
+
+      // Website start hote hi loop trigger ho jayega
+      startConstructionLoop();
     });
 
     function openModal() {
@@ -246,14 +262,6 @@
         localStorage.setItem("userName", name || "Gamer");
         localStorage.setItem("userPic", pictureSrc || "");
       }
-    }
-
-    function handleManualLogin(e) {
-      e.preventDefault();
-      const email = document.getElementById('login-email').value;
-      const username = email.split('@')[0];
-      const randomAvatar = `https://api.dicebear.com/7.x/pixel-art/svg?seed=${username}`;
-      unlockStore(username, randomAvatar);
     }
 
     function handleCredentialResponse(response) {
