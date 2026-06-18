@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZubayGames - Premium Game Store</title>
+  
+  <link rel="icon" type="image/png" href="zgs-logo.png">
+  
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
@@ -55,6 +58,7 @@
     
     <header id="main-header" class="border-b border-gray-800 bg-[#0f172a] sticky top-0 z-50">
       <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center gap-4">
+        
         <div class="text-2xl font-black tracking-wider text-cyan-400 uppercase">
           Zubay<span class="text-white">Games</span>
         </div>
@@ -93,17 +97,17 @@
               
               <div class="grid grid-cols-2 gap-2 text-center">
                 <div class="bg-[#131b2e] border border-gray-800 p-2 rounded-lg">
-                  <div id="total-orders-count" class="text-xl font-black text-cyan-400">12</div>
+                  <div id="total-orders-count" class="text-xl font-black text-cyan-400">0</div>
                   <div class="text-[10px] uppercase tracking-wide font-bold text-gray-400">Total Orders</div>
                 </div>
                 <div class="bg-[#131b2e] border border-gray-800 p-2 rounded-lg">
-                  <div id="completed-orders-count" class="text-xl font-black text-green-400">9</div>
+                  <div id="completed-orders-count" class="text-xl font-black text-green-400">0</div>
                   <div class="text-[10px] uppercase tracking-wide font-bold text-gray-400">Completed</div>
                 </div>
               </div>
 
               <div class="bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-[11px] p-2 rounded-lg text-center font-medium">
-                ⏳ 3 Orders are processing
+                ⏳ Orders status synchronization live
               </div>
 
               <button onclick="logout()" class="w-full text-left text-xs font-bold text-red-400 hover:text-red-500 pt-2 border-t border-gray-800 flex items-center gap-2 cursor-pointer">
@@ -193,23 +197,21 @@
   </div>
 
   <script>
-    // AUTO CHECK ON PAGE LOAD: Checks if user is already logged in
     document.addEventListener("DOMContentLoaded", function() {
       const savedUser = localStorage.getItem("isLoggedIn");
       const savedName = localStorage.getItem("userName");
       const savedPic = localStorage.getItem("userPic");
 
       if (savedUser === "true") {
-        // Automatically unlock without showing modal
         unlockStore(savedName, savedPic, false);
       } else {
-        // If not logged in, keep modal open and freeze page
         document.getElementById('login-modal').classList.remove('hidden');
       }
     });
 
     function openModal() {
       document.getElementById('login-modal').classList.remove('hidden');
+      document.getElementById('main-site').classList.remove('pointer-events-none', 'select-none', 'opacity-40');
       document.getElementById('main-site').classList.add('blur-md');
       document.getElementById('main-body').classList.add('overflow-hidden');
     }
@@ -226,7 +228,6 @@
       document.getElementById('user-profile-wrapper').classList.add('hidden');
     }
 
-    // Unlock store and selectively save data to localStorage
     function unlockStore(name, pictureSrc, saveToStorage = true) {
       document.getElementById('login-modal').classList.add('hidden');
       
@@ -240,7 +241,6 @@
       if(name) document.getElementById('user-name').innerText = name;
       if(pictureSrc) document.getElementById('user-img').src = pictureSrc;
 
-      // Save session info to prevent relogin on refresh
       if(saveToStorage) {
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userName", name || "Gamer");
@@ -273,7 +273,6 @@
       }
     });
 
-    // Clear session on Logout
     function logout() {
       localStorage.removeItem("isLoggedIn");
       localStorage.removeItem("userName");
@@ -281,7 +280,6 @@
       window.location.reload();
     }
 
-    // Smooth Scrolling Engine
     document.querySelectorAll('.scroll-link').forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
