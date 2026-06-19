@@ -7,13 +7,11 @@
   
   <link class="rounded-full" rel="icon" type="image/png" href="zgs-logo.png">
   
-  <!-- Tailwind CSS & Google Sign-In API -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body class="bg-[#0b111e] text-white font-sans overflow-x-hidden" id="main-body">
 
-  <!-- Secure Google Login Modal Overlay -->
   <div id="login-modal" class="fixed inset-0 bg-[#0b111e]/95 backdrop-blur-xl z-[100] flex items-center justify-center p-4">
     <div class="bg-[#0f172a] border border-gray-800 w-full max-w-md p-8 rounded-2xl shadow-2xl space-y-6 text-center relative">
       
@@ -26,7 +24,6 @@
         <p class="text-gray-400 text-xs">Official & Secure Google Authentication Required</p>
       </div>
 
-      <!-- Verified Google OAuth Button Container -->
       <div class="flex flex-col items-center justify-center py-6 bg-[#131b2e] border border-gray-800/60 rounded-xl p-4">
         <div id="g_id_onload"
              data-client_id="553436437827-hdp6q3siq48d3peq4090bssvjroqtbkr.apps.googleusercontent.com"
@@ -39,7 +36,6 @@
     </div>
   </div>
 
-  <!-- Navbar Header -->
   <header id="main-header" class="border-b border-gray-800 bg-[#0f172a] sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center gap-4">
       
@@ -47,12 +43,11 @@
         Zubay<span class="text-white">Games</span>
       </button>
       
-      <!-- Navbar Links -->
       <nav class="flex space-x-6 text-gray-300 font-medium text-sm">
         <button onclick="showStorefrontView()" class="transition cursor-pointer bg-transparent border-none text-left">Home</button>
         <button onclick="smoothScrollTo('game-topup-section')" class="transition cursor-pointer bg-transparent border-none text-left">Games</button>
-        <button onclick="showStandalonePage('info')" class="transition cursor-pointer bg-transparent border-none text-left">Info</button>
-        <button onclick="showStandalonePage('about')" class="transition cursor-pointer bg-transparent border-none text-left">About Us</button>
+        <button onclick="showStandalonePage('info', false)" class="transition cursor-pointer bg-transparent border-none text-left">Info ℹ️</button>
+        <button onclick="showStandalonePage('about', false)" class="transition cursor-pointer bg-transparent border-none text-left">About Us 👋</button>
       </nav>
 
       <div class="flex items-center space-x-4">
@@ -69,7 +64,6 @@
           Sign In 🔑
         </button>
 
-        <!-- User Profile Dropdown Component -->
         <div id="user-profile-wrapper" class="relative hidden">
           <button onclick="toggleDropdown()" id="user-profile-btn" class="flex items-center space-x-2 bg-gray-800 p-1.5 rounded-full pr-3 hover:ring-2 hover:ring-cyan-500 transition cursor-pointer">
             <img id="user-img" src="https://api.dicebear.com/7.x/bottts/svg?seed=Zubay" alt="User" class="w-7 h-7 rounded-full bg-slate-700">
@@ -107,11 +101,9 @@
     </div>
   </header>
 
-  <!-- SECTION A: Main Website Content Structure (Storefront) -->
   <div id="main-site" class="transition-all duration-500">
     <main class="max-w-7xl mx-auto px-4 py-6 space-y-14">
 
-      <!-- Mega Banner Grid -->
       <section class="w-full rounded-2xl overflow-hidden grid grid-cols-4 h-32 md:h-40 font-bold text-center text-lg shadow-xl">
         <div onclick="smoothScrollTo('subscription-section')" class="bg-[#e50914] flex flex-col justify-center items-center p-2 cursor-pointer hover:opacity-90 transition"><span class="text-2xl md:text-3xl tracking-tight">NETFLIX</span></div>
         <div onclick="smoothScrollTo('subscription-section')" class="bg-[#00a8e1] flex flex-col justify-center items-center p-2 cursor-pointer hover:opacity-90 transition"><span class="italic text-base md:text-xl">prime video</span></div>
@@ -119,7 +111,6 @@
         <div onclick="smoothScrollTo('subscription-section')" class="bg-[#facc15] flex flex-col justify-center items-center p-2 text-black cursor-pointer hover:opacity-90 transition"><span class="text-3xl">🦉</span><span class="text-xs font-black mt-1">OWLY</span></div>
       </section>
 
-      <!-- Category Navigation Grid -->
       <section class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
         <button onclick="smoothScrollTo('game-topup-section')" class="bg-[#131b2e] p-5 rounded-xl border border-gray-800 hover:border-cyan-500 transition flex flex-col items-center justify-center cursor-pointer">
           <div class="text-3xl mb-1">🎮</div>
@@ -139,7 +130,6 @@
         </button>
       </section>
 
-      <!-- Products Display: Game Top Up Section -->
       <section id="game-topup-section" class="space-y-4">
         <div class="flex justify-between items-center border-b border-gray-800 pb-2">
           <h2 class="text-xl font-bold tracking-wide text-gray-100 flex items-center gap-2">
@@ -181,7 +171,6 @@
         </div>
       </section>
 
-      <!-- Products Display: Premium Subscriptions Section -->
       <section id="subscription-section" class="space-y-4 pt-4">
         <div class="flex justify-between items-center border-b border-gray-800 pb-2">
           <h2 class="text-xl font-bold tracking-wide text-gray-100 flex items-center gap-2">
@@ -212,73 +201,157 @@
         </div>
       </section>
 
-      <!-- Dummy structural layout segments for targets -->
       <div id="steam-section" class="pt-2"></div>
       <div id="software-section" class="pt-2"></div>
 
     </main>
   </div>
 
-  <!-- SECTION B: Standalone Unified Page Layout (For Info/About Us/Contact Us views) -->
   <div id="standalone-page" class="hidden min-h-[calc(100vh-73px)] flex flex-col justify-center items-center px-6 py-20 text-center transition-all duration-500">
-    <div class="max-w-4xl mx-auto space-y-8">
+    <div class="max-w-4xl mx-auto space-y-8 w-full">
       
-      <!-- Content Sub-Block: Store Info -->
       <div id="standalone-info-content" class="hidden space-y-8 animate-fade-in">
-        <h1 class="text-4xl md:text-6xl font-black tracking-tight uppercase bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-          About ZubayGames
+        <h1 class="text-4xl md:text-6xl font-black tracking-tight uppercase text-white">
+          Store Information
         </h1>
-        <div class="max-w-3xl text-gray-400 text-base md:text-lg leading-relaxed space-y-6 text-justify md:text-center font-normal">
-          <p>
-            Established in 2026, <span class="text-cyan-400 font-semibold">ZubayGameshop</span> has quickly become a premier elite hub and trusted online retailer specializing in global digital game currency, codes, gift cards, and secure video streaming accounts. We set out with one primary objective: delivering fast, seamless, and completely secure top-up transactions.
-          </p>
-          <p>
-            Over the years, we have solidified our standing as an incredibly trusted and authoritative service provider in the gaming industry. Committed to providing a premium shopping experience, by using high-grade framework protocols and secure API validations, we eliminate wait times, ensure maximum delivery accuracy, and promise premium reliability across all top-up segments.
-          </p>
-          <p>
-            With a user-friendly interface and reliable ecosystem customer support, our platform employs robust verification measures to safeguard sensitive information and transactions, ensuring that customer data remains completely protected at all times.
-          </p>
+        <div class="max-w-3xl text-gray-400 text-sm md:text-base leading-relaxed space-y-6 text-left border border-gray-800 p-6 rounded-xl bg-[#131b2e]/50 w-full">
+          <div>
+            <h3 class="text-white font-bold text-base mb-1">Overview</h3>
+            <p>Established in 2026, ZubayGameshop has quickly become a premier elite hub and trusted online retailer specializing in global digital game currency, codes, gift cards, and secure video streaming accounts. We set out with one primary objective: delivering fast, seamless, and completely secure top-up transactions.</p>
+          </div>
+          <div class="border-t border-gray-800/80 pt-4">
+            <h3 class="text-white font-bold text-base mb-1">Our Mission</h3>
+            <p>Over the years, we have solidified our standing as an incredibly trusted and authoritative service provider in the gaming industry. Committed to providing a premium shopping experience, by using high-grade framework protocols and secure API validations, we eliminate wait times, ensure maximum delivery accuracy, and promise premium reliability across all top-up segments.</p>
+          </div>
+          <div class="border-t border-gray-800/80 pt-4">
+            <h3 class="text-white font-bold text-base mb-1">Security & Safety</h3>
+            <p>With a user-friendly interface and reliable ecosystem customer support, our platform employs robust verification measures to safeguard sensitive information and transactions, ensuring that customer data remains completely protected at all times.</p>
+          </div>
         </div>
       </div>
 
-      <!-- Content Sub-Block: About Founder -->
       <div id="standalone-about-content" class="hidden space-y-8 animate-fade-in">
-        <h1 class="text-4xl md:text-6xl font-black tracking-tight uppercase bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">
+        <h1 class="text-4xl md:text-6xl font-black tracking-tight uppercase text-white">
           About The Founder
         </h1>
-        <div class="max-w-3xl text-gray-400 text-base md:text-lg leading-relaxed space-y-6 text-justify md:text-center font-normal">
-          <p>
-            Behind the operational success and development of this network is the founder, <span class="text-purple-400 font-bold">Fahmid Hossain Tanim</span>. Operating straight from <span class="text-white font-semibold">Bangladesh</span>, I have dedicated years to programming, secure cloud hosting frameworks, and competitive gaming landscapes.
-          </p>
-          <p>
-            Within the massive digital and gaming community, a great number of active players, creators, and server administrators recognize me under my prominent gaming and creator alias — <span class="text-white font-black bg-purple-500/20 px-2 py-0.5 rounded border border-purple-500/30">NotSwiftPlayz</span>.
-          </p>
-          <p>
-            This store is built on the strong pillars of personal reputation, passion, and complete transactional transparency. My primary goal is to ensure nobody encounters fraudulent storefronts. When buying from this hub, your orders and credentials are in completely safe, experienced hands!
-          </p>
+        <div class="max-w-3xl text-gray-400 text-sm md:text-base leading-relaxed space-y-6 text-left border border-gray-800 p-6 rounded-xl bg-[#131b2e]/50 w-full">
+          <div>
+            <h3 class="text-white font-bold text-base mb-1">Introduction</h3>
+            <p>Behind the operational success and development of this network is the founder, Fahmid Hossain Tanim. Operating straight from Bangladesh, I have dedicated years to programming, secure cloud hosting frameworks, and competitive gaming landscapes.</p>
+          </div>
+          <div class="border-t border-gray-800/80 pt-4">
+            <h3 class="text-white font-bold text-base mb-1">Community Identity</h3>
+            <p>Within the massive digital and gaming community, a great number of active players, creators, and server administrators recognize me under my prominent gaming and creator alias — NotSwiftPlayz.</p>
+          </div>
+          <div class="border-t border-gray-800/80 pt-4">
+            <h3 class="text-white font-bold text-base mb-1">Our Core Value</h3>
+            <p>This store is built on the strong pillars of personal reputation, passion, and complete transactional transparency. My primary goal is to ensure nobody encounters fraudulent storefronts. When buying from this hub, your orders and credentials are in completely safe, experienced hands!</p>
+          </div>
         </div>
       </div>
 
-      <!-- DEDICATED VIEW: Contact Details Panel Layout (Click Disabled modules) -->
       <div id="standalone-contact-content" class="hidden space-y-8 animate-fade-in text-center">
-        <h1 class="text-4xl md:text-6xl font-black tracking-tight uppercase bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent">
+        <h1 class="text-4xl md:text-6xl font-black tracking-tight uppercase text-white">
           Contact Us
         </h1>
         <p class="text-gray-400 text-sm max-w-md mx-auto">Have any queries or need premium support for your top-ups? Connect with us via our official active links below.</p>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto pt-6">
-          <!-- WhatsApp static block -->
           <div class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col items-center justify-center gap-3">
             <div class="text-4xl">💬</div>
             <div class="text-sm font-bold text-gray-400">Official WhatsApp</div>
             <div class="text-xs text-gray-500 font-mono tracking-wide">+880 01720960851</div>
           </div>
-          <!-- Gmail static block -->
           <div class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col items-center justify-center gap-3">
             <div class="text-4xl">✉</div>
             <div class="text-sm font-bold text-gray-400">Email Support</div>
             <div class="text-xs text-gray-500 font-mono select-all truncate max-w-full">tanimtanimhossain44@gmail.com</div>
           </div>
+        </div>
+      </div>
+
+      <div id="standalone-terms-content" class="hidden space-y-8 animate-fade-in">
+        <h1 class="text-4xl md:text-6xl font-black tracking-tight uppercase text-white">
+          Terms Of Service
+        </h1>
+        <div class="max-w-3xl text-gray-400 text-sm md:text-base leading-relaxed space-y-6 text-left border border-gray-800 p-6 rounded-xl bg-[#131b2e]/50 w-full">
+          <div>
+            <h3 class="text-white font-bold text-base mb-1">1. Acceptance of Terms</h3>
+            <p>By accessing and utilizing ZubayGames, you explicitly agree to comply with our platform architecture, terms, and secure transaction protocols. If you do not agree, you must immediately terminate usage.</p>
+          </div>
+          <div class="border-t border-gray-800/80 pt-4">
+            <h3 class="text-white font-bold text-base mb-1">2. Account Responsibility</h3>
+            <p>Users logging in via secure Google Authentication portals are fully and solely responsible for maintaining session privacy, activities, and local credentials logs.</p>
+          </div>
+          <div class="border-t border-gray-800/80 pt-4">
+            <h3 class="text-white font-bold text-base mb-1">3. Virtual Digital Goods</h3>
+            <p>All game top-ups, streaming keys, and gift codes are fully automated digital assets. Any fraudulent payment rollbacks or chargeback attempts will lead to an immediate, permanent API ban protocol across our network.</p>
+          </div>
+          <div class="border-t border-gray-800/80 pt-4">
+            <h3 class="text-white font-bold text-base mb-1">4. Platform Liability Limit</h3>
+            <p>We hold zero liability for issues, losses, or wrong deliveries occurring due to incorrect user credentials or character IDs entered during the order input process.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="standalone-privacy-content" class="hidden space-y-8 animate-fade-in">
+        <h1 class="text-4xl md:text-6xl font-black tracking-tight uppercase text-white">
+          Privacy Policy
+        </h1>
+        <div class="max-w-3xl text-gray-400 text-sm md:text-base leading-relaxed space-y-6 text-left border border-gray-800 p-6 rounded-xl bg-[#131b2e]/50 w-full">
+          <div>
+            <h3 class="text-white font-bold text-base mb-1">1. Data Encryption & Security</h3>
+            <p>Your digital profiles, Google OAuth tokens, and local cache logs are securely processed under sandboxed framework environments to prevent any unauthorized exposure.</p>
+          </div>
+          <div class="border-t border-gray-800/80 pt-4">
+            <h3 class="text-white font-bold text-base mb-1">2. Information Tracking</h3>
+            <p>We only monitor and track internal store order synchronization metrics to speed up, authorize, and complete automated digital deliveries seamlessly.</p>
+          </div>
+          <div class="border-t border-gray-800/80 pt-4">
+            <h3 class="text-white font-bold text-base mb-1">3. Zero Third-Party Sharing</h3>
+            <p>ZubayGames guarantees that we never store, share, distribute, or leak payment receipts, email addresses, or user identity logs to outer modular frameworks or third-party marketing services.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="standalone-refund-content" class="hidden space-y-8 animate-fade-in">
+        <h1 class="text-4xl md:text-6xl font-black tracking-tight uppercase text-white">
+          Return & Refund Policy
+        </h1>
+        <div class="max-w-3xl text-gray-400 text-sm md:text-base leading-relaxed space-y-6 text-left border border-gray-800 p-6 rounded-xl bg-[#131b2e]/50 w-full">
+          
+          <div>
+            <h3 class="text-white font-bold text-base mb-1">Overview</h3>
+            <p>At ZubayGames, all of our products are digital goods such as game currency, in-game items, applications, and other downloadable content. Because of the nature of digital products, we do not offer returns once a product is delivered. Once the item has been sent, the transaction is considered final.</p>
+            <p class="mt-2">We value our customers and aim to provide the highest level of support and satisfaction. While returns are not possible for digital products, we do offer a limited warranty in specific situations explained below.</p>
+          </div>
+
+          <div class="border-t border-gray-800/80 pt-4">
+            <h3 class="text-white font-bold text-base mb-1">Refund and Warranty Policy</h3>
+            <p>If you purchase an item from us and later receive a refund directly from Google Play Store within 120 days of purchase, you may be eligible for a refill or a full refund from us, provided that:</p>
+            <ul class="list-disc list-inside space-y-1 mt-2 text-gray-300">
+              <li>The entire order of the related game or application items was purchased only through our website.</li>
+              <li>Proper proof of the Google Play Store refund is submitted to us, including screenshots, order IDs, and refund confirmation details.</li>
+              <li>You can't purchase any item in your id from any others shop.</li>
+            </ul>
+            <p class="mt-3">If these conditions are met, we will either re-deliver the purchased digital items or return your money, depending on your preference and our assessment. (If we can detect any fraudulent activity we can refuse your refund)</p>
+          </div>
+
+          <div class="border-t border-gray-800/80 pt-4">
+            <h3 class="text-white font-bold text-base mb-1">Important Conditions</h3>
+            <ul class="list-disc list-inside space-y-1 text-gray-300">
+              <li>We must verify that the complete transaction history for the concerned app or game was made through our platform.</li>
+              <li>Partial orders or mixed purchases (items bought from other sellers) are not eligible for our refill or refund service.</li>
+              <li>Refund claims must be submitted within 7 days of receiving the Google Play Store refund.</li>
+              <li>We reserve the right to decline a refund or refill request if sufficient proof is not provided or if the request does not meet our policy conditions.</li>
+            </ul>
+          </div>
+
+          <div class="border-t border-gray-800/80 pt-4">
+            <h3 class="text-white font-bold text-base mb-1">Non-Refundable Cases</h3>
+            <p>Digital products once delivered and successfully received cannot be returned or refunded under normal conditions.</p>
+          </div>
+
         </div>
       </div>
 
@@ -289,27 +362,23 @@
     </div>
   </div>
 
-  <!-- EXACT IMAGE LAYOUT COMPLIANT FOOTER (Updated Location & De-routed Info details) -->
   <footer class="bg-[#060b13] mt-20 pt-12 pb-6 text-[14px] text-gray-400 font-sans">
     <div class="max-w-7xl mx-auto px-6 space-y-12">
       
-      <!-- Payment Layout Alignment Subpanel -->
       <div class="flex items-center space-x-4 select-none">
         <span class="text-white font-bold text-[15px]">Payment Methods:</span>
-        <div class="flex items-center gap-2">
-          <!-- bKash Box -->
-          <div class="bg-[#df146e] h-[34px] w-[50px] rounded flex items-center justify-center font-black text-white text-[11px] uppercase shadow" title="bKash">bKash</div>
-          <!-- Nagad Box -->
-          <div class="bg-[#f15922] h-[34px] w-[50px] rounded flex items-center justify-center font-black text-white text-[11px] shadow" title="Nagad">নগদ</div>
-          <!-- Rocket Box -->
-          <div class="bg-[#8c268a] h-[34px] w-[50px] rounded flex items-center justify-center font-black text-white text-[11px] shadow" title="Rocket">রकेट</div>
+        <div class="flex items-center gap-3">
+          <div class="h-[34px] w-[55px] rounded bg-white overflow-hidden flex items-center justify-center p-0.5 shadow">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTppTIBZOqw5KePbHl9YduprTo5JNKbUbmVlyWlQUpqNw&s" alt="bKash" class="h-full w-full object-contain">
+          </div>
+          <div class="h-[34px] w-[55px] rounded bg-white overflow-hidden flex items-center justify-center p-0.5 shadow">
+            <img src="https://play-lh.googleusercontent.com/tFk8R3Fkav7fZEY8e7VJtMwtRCowaWU2Us-AmWaKnTOWBer427fPjWetoOnhrUM4nWeZb0AOEJ6lnlwJ9HRu" alt="Nagad" class="h-full w-full object-contain">
+          </div>
         </div>
       </div>
 
-      <!-- Core Content Grid -->
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pt-4">
         
-        <!-- Left Side Branding Column Segment -->
         <div class="md:col-span-4 space-y-4 pr-4">
           <div class="flex items-center space-x-2">
             <span class="text-2xl font-black text-white tracking-tight uppercase">Zubay<span class="text-cyan-400">Games</span></span>
@@ -319,19 +388,17 @@
           </p>
         </div>
 
-        <!-- Middle Column 1: Useful Links -->
         <div class="md:col-span-3 md:pl-8 space-y-3">
           <h4 class="text-white font-bold text-[15px] tracking-wide">Useful Links</h4>
           <ul class="space-y-2 text-[13px] text-gray-400">
             <li><button onclick="showStorefrontView()" class="hover:text-white transition bg-transparent border-none p-0 cursor-pointer">Shop</button></li>
-            <li><button onclick="showStandalonePage('about')" class="hover:text-white transition bg-transparent border-none p-0 cursor-pointer">About Us</button></li>
-            <li><button onclick="showStandalonePage('contact')" class="hover:text-white transition bg-transparent border-none p-0 cursor-pointer">Contact Us</button></li>
+            <li><button onclick="showStandalonePage('about', false)" class="hover:text-white transition bg-transparent border-none p-0 cursor-pointer">About Us</button></li>
+            <li><button onclick="showStandalonePage('contact', false)" class="hover:text-white transition bg-transparent border-none p-0 cursor-pointer">Contact Us</button></li>
             <li><button onclick="handleUnderConstructionLink('Blog')" class="hover:text-gray-600 transition bg-transparent border-none p-0 cursor-not-allowed text-gray-500">Blog</button></li>
             <li><button onclick="handleUnderConstructionLink('FAQs')" class="hover:text-gray-600 transition bg-transparent border-none p-0 cursor-not-allowed text-gray-500">FAQs</button></li>
           </ul>
         </div>
 
-        <!-- Middle Column 2: Safety Assurances -->
         <div class="md:col-span-2 space-y-3">
           <h4 class="text-white font-bold text-[15px] tracking-wide">Service</h4>
           <ul class="space-y-2 text-[13px] text-gray-400">
@@ -340,7 +407,6 @@
           </ul>
         </div>
 
-        <!-- Right Side Location/Mail Support Column -->
         <div class="md:col-span-3 space-y-3">
           <h4 class="text-white font-bold text-[15px] tracking-wide">Info</h4>
           <ul class="space-y-2.5 text-[13px] text-gray-400">
@@ -361,20 +427,18 @@
 
       </div>
 
-      <!-- Bottom Meta Navigation Row Area -->
       <div class="border-t border-gray-800/40 pt-6 flex flex-col sm:flex-row items-center justify-between text-[12px] text-gray-500 gap-4">
         <div>@ 2026 - All rights Reserved by Zubaygames.</div>
         <div class="flex space-x-6">
-          <a href="#" class="hover:text-gray-400 transition">Terms Of Service</a>
-          <a href="#" class="hover:text-gray-400 transition">Privacy Policy</a>
-          <a href="#" class="hover:text-gray-400 transition">Refund Policy</a>
+          <button onclick="showStandalonePage('terms', false)" class="hover:text-gray-400 transition cursor-pointer bg-transparent border-none p-0 text-[12px]">Terms Of Service</button>
+          <button onclick="showStandalonePage('privacy', false)" class="hover:text-gray-400 transition cursor-pointer bg-transparent border-none p-0 text-[12px]">Privacy Policy</button>
+          <button onclick="showStandalonePage('refund', false)" class="hover:text-gray-400 transition cursor-pointer bg-transparent border-none p-0 text-[12px]">Refund Policy</button>
         </div>
       </div>
 
     </div>
   </footer>
 
-  <!-- JavaScript Modules -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const savedUser = localStorage.getItem("isLoggedIn");
@@ -400,32 +464,40 @@
       }
     }
 
-    // Dynamic router control
-    function showStandalonePage(viewType) {
+    // Dynamic Central Router Control for All Views
+    function showStandalonePage(viewType, shouldScroll = true) {
       document.getElementById('main-site').classList.add('hidden');
       const standaloneWrapper = document.getElementById('standalone-page');
       standaloneWrapper.classList.remove('hidden');
 
-      const infoContent = document.getElementById('standalone-info-content');
-      const aboutContent = document.getElementById('standalone-about-content');
-      const contactContent = document.getElementById('standalone-contact-content');
+      // Sab sub-views ko check karke hidden list me daalo
+      const views = ['info', 'about', 'contact', 'terms', 'privacy', 'refund'];
+      views.forEach(v => {
+        const block = document.getElementById(`standalone-${v}-content`);
+        if (block) block.classList.add('hidden');
+      });
 
-      // Reset all sub-views hidden first
-      infoContent.classList.add('hidden');
-      aboutContent.classList.add('hidden');
-      contactContent.classList.add('hidden');
+      // Target current active block show karo
+      const currentActiveBlock = document.getElementById(`standalone-${viewType}-content`);
+      if (currentActiveBlock) currentActiveBlock.classList.remove('hidden');
 
-      if (viewType === 'about') {
-        aboutContent.classList.remove('hidden');
-        document.title = "About Founder - ZubayGames";
-      } else if (viewType === 'contact') {
-        contactContent.classList.remove('hidden');
-        document.title = "Contact Us - ZubayGames";
+      // Update Dynamic Meta Title headers
+      const titles = {
+        about: "About Founder - ZubayGames",
+        contact: "Contact Us - ZubayGames",
+        info: "Store Information - ZubayGames",
+        terms: "Terms of Service - ZubayGames",
+        privacy: "Privacy Policy - ZubayGames",
+        refund: "Refund Policy - ZubayGames"
+      };
+      document.title = titles[viewType] || "ZubayGames";
+      
+      // Control Scroll Jump Behavior Fixes
+      if (shouldScroll) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        infoContent.classList.remove('hidden');
-        document.title = "Store Information - ZubayGames";
+        window.scrollTo({ top: 0, behavior: 'auto' });
       }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function showStorefrontView() {
@@ -435,7 +507,6 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Handle under-construction notification for broken modular features gracefully
     function handleUnderConstructionLink(featureName) {
       alert("⚙️ " + featureName + " section setup is currently under maintenance. Stay tuned!");
     }
@@ -452,7 +523,7 @@
       }, 50);
     }
 
-    // Modal view handler
+    // Auth Overlay Logic
     function openModal() {
       document.getElementById('login-modal').classList.remove('hidden');
       document.getElementById('main-site').classList.add('blur-md');
