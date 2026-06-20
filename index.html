@@ -104,11 +104,10 @@
   <div id="main-site" class="transition-all duration-500">
     <main class="max-w-7xl mx-auto px-4 py-6 space-y-14">
 
-      <section class="w-full rounded-2xl overflow-hidden grid grid-cols-4 h-32 md:h-40 font-bold text-center text-lg shadow-xl">
+      <section class="w-full rounded-2xl overflow-hidden grid grid-cols-3 h-32 md:h-40 font-bold text-center text-lg shadow-xl">
         <div onclick="smoothScrollTo('subscription-section')" class="bg-[#e50914] flex flex-col justify-center items-center p-2 cursor-pointer hover:opacity-90 transition"><span class="text-2xl md:text-3xl tracking-tight">NETFLIX</span></div>
         <div onclick="smoothScrollTo('subscription-section')" class="bg-[#00a8e1] flex flex-col justify-center items-center p-2 cursor-pointer hover:opacity-90 transition"><span class="italic text-base md:text-xl">prime video</span></div>
         <div onclick="smoothScrollTo('subscription-section')" class="bg-[#1ed760] flex flex-col justify-center items-center p-2 text-black cursor-pointer hover:opacity-90 transition"><span class="text-xl md:text-2xl">Spotify</span></div>
-        <div onclick="smoothScrollTo('subscription-section')" class="bg-[#facc15] flex flex-col justify-center items-center p-2 text-black cursor-pointer hover:opacity-90 transition"><span class="text-3xl">🦉</span><span class="text-xs font-black mt-1">OWLY</span></div>
       </section>
 
       <section class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
@@ -174,30 +173,43 @@
       <section id="subscription-section" class="space-y-4 pt-4">
         <div class="flex justify-between items-center border-b border-gray-800 pb-2">
           <h2 class="text-xl font-bold tracking-wide text-gray-100 flex items-center gap-2">
-            <span class="w-1.5 h-6 bg-cyan-500 rounded-sm inline-block"></span> Entertainment Subscriptions
+            <span class="w-1.5 h-6 bg-cyan-500 rounded-sm inline-block"></span> Entertainment & Subscriptions
           </h2>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          
+          <div onclick="handleGameClick('nitro-promo.html')" class="bg-[#131b2e] rounded-xl overflow-hidden border border-gray-800 hover:scale-[1.03] transition-all group cursor-pointer">
+            <div class="h-44 bg-[#1e293b] bg-cover bg-center" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ8Q_rXsPnzMD76P2J1XkQqOCTbapTV7uJdjvf0BSrOg&s=10');"></div>
+            <div class="p-3 text-center">
+              <h3 class="text-xs font-bold text-gray-200 group-hover:text-cyan-400">Nitro Promo Code</h3>
+            </div>
+          </div>
+
           <div onclick="handleGameClick('netflix.html')" class="bg-[#131b2e] rounded-xl overflow-hidden border border-gray-800 hover:scale-[1.03] transition-all group cursor-pointer">
-            <div class="h-40 bg-[#1e293b] flex items-center justify-center bg-gradient-to-br from-red-900 to-black p-4 text-center font-black text-2xl tracking-tighter text-[#e50914]">NETFLIX</div>
+            <div class="h-44 bg-[#1e293b] flex items-center justify-center bg-gradient-to-br from-red-900 to-black p-4 text-center font-black text-2xl tracking-tighter text-[#e50914]">NETFLIX</div>
             <div class="p-3 text-center"><h3 class="text-xs font-bold text-gray-200 group-hover:text-cyan-400">Netflix Premium</h3></div>
           </div>
+          
           <div onclick="handleGameClick('spotify.html')" class="bg-[#131b2e] rounded-xl overflow-hidden border border-gray-800 hover:scale-[1.03] transition-all group cursor-pointer">
-            <div class="h-40 bg-[#1e293b] flex items-center justify-center bg-gradient-to-br from-green-900 to-black p-4 text-center font-black text-2xl text-[#1ed760]">Spotify</div>
+            <div class="h-44 bg-[#1e293b] flex items-center justify-center bg-gradient-to-br from-green-900 to-black p-4 text-center font-black text-2xl text-[#1ed760]">Spotify</div>
             <div class="p-3 text-center"><h3 class="text-xs font-bold text-gray-200 group-hover:text-cyan-400">Spotify Premium</h3></div>
           </div>
+          
           <div onclick="handleGameClick('prime.html')" class="bg-[#131b2e] rounded-xl overflow-hidden border border-gray-800 hover:scale-[1.03] transition-all group cursor-pointer">
-            <div class="h-40 bg-[#1e293b] flex items-center justify-center bg-gradient-to-br from-blue-900 to-black p-4 text-center font-black italic text-xl text-[#00a8e1]">prime video</div>
+            <div class="h-44 bg-[#1e293b] flex items-center justify-center bg-gradient-to-br from-blue-900 to-black p-4 text-center font-black italic text-xl text-[#00a8e1]">prime video</div>
             <div class="p-3 text-center"><h3 class="text-xs font-bold text-gray-200 group-hover:text-cyan-400">Amazon Prime</h3></div>
           </div>
+          
           <div onclick="handleGameClick('crunchyroll.html')" class="bg-[#131b2e] rounded-xl overflow-hidden border border-gray-800 hover:scale-[1.03] transition-all group cursor-pointer">
-            <div class="h-40 bg-[#1e293b] flex items-center justify-center bg-gradient-to-br from-orange-600 to-black p-4 text-center font-black text-xl text-orange-400">Crunchyroll</div>
+            <div class="h-44 bg-[#1e293b] flex items-center justify-center bg-gradient-to-br from-orange-600 to-black p-4 text-center font-black text-xl text-orange-400">Crunchyroll</div>
             <div class="p-3 text-center"><h3 class="text-xs font-bold text-gray-200 group-hover:text-cyan-400">Crunchyroll Premium</h3></div>
           </div>
-          <div onclick="handleGameClick('youtube.html')" class="bg-[#131b2e] rounded-xl overflow-hidden border border-gray-800 hover:scale-[1.03] transition-all group cursor-pointer col-span-2 sm:col-span-1">
-            <div class="h-40 bg-[#1e293b] flex items-center justify-center bg-gradient-to-br from-red-700 to-black p-4 text-center font-black text-xl text-white">YouTube Premium</div>
+          
+          <div onclick="handleGameClick('youtube.html')" class="bg-[#131b2e] rounded-xl overflow-hidden border border-gray-800 hover:scale-[1.03] transition-all group cursor-pointer">
+            <div class="h-44 bg-[#1e293b] flex items-center justify-center bg-gradient-to-br from-red-700 to-black p-4 text-center font-black text-sm text-white">YouTube Premium</div>
             <div class="p-3 text-center"><h3 class="text-xs font-bold text-gray-200 group-hover:text-cyan-400">YouTube Premium</h3></div>
           </div>
+
         </div>
       </section>
 
@@ -241,7 +253,7 @@
           </div>
           <div class="border-t border-gray-800/80 pt-4">
             <h3 class="text-white font-bold text-base mb-1">Community Identity</h3>
-            <p>Within the massive digital and gaming community, a great number of active players, creators, and server administrators recognize me under my prominent gaming and creator alias — NotSwiftPlayz.</p>
+            <p>Within the massive digital and gaming community, a great number of active players, creators, and server administrators recognize me under my prestigious gaming and creator alias — NotSwiftPlayz.</p>
           </div>
           <div class="border-t border-gray-800/80 pt-4">
             <h3 class="text-white font-bold text-base mb-1">Our Core Value</h3>
@@ -319,7 +331,6 @@
           Return & Refund Policy
         </h1>
         <div class="max-w-3xl text-gray-400 text-sm md:text-base leading-relaxed space-y-6 text-left border border-gray-800 p-6 rounded-xl bg-[#131b2e]/50 w-full">
-          
           <div>
             <h3 class="text-white font-bold text-base mb-1">Overview</h3>
             <p>At ZubayGames, all of our products are digital goods such as game currency, in-game items, applications, and other downloadable content. Because of the nature of digital products, we do not offer returns once a product is delivered. Once the item has been sent, the transaction is considered final.</p>
@@ -351,7 +362,6 @@
             <h3 class="text-white font-bold text-base mb-1">Non-Refundable Cases</h3>
             <p>Digital products once delivered and successfully received cannot be returned or refunded under normal conditions.</p>
           </div>
-
         </div>
       </div>
 
@@ -409,190 +419,59 @@
 
         <div class="md:col-span-3 space-y-3">
           <h4 class="text-white font-bold text-[15px] tracking-wide">Info</h4>
-          <ul class="space-y-2.5 text-[13px] text-gray-400">
-            <li class="flex items-start space-x-2">
-              <span class="text-gray-500 text-[12px] mt-0.5">📍</span>
-              <span>Dhaka,Dhanmondi,Zigatola</span>
-            </li>
-            <li class="flex items-center space-x-2 text-gray-400">
-              <span class="text-gray-500 text-[12px]">💬</span>
-              <span>WhatsApp</span>
-            </li>
-            <li class="flex items-center space-x-2 text-gray-400">
-              <span class="text-gray-500 text-[12px]">✉</span>
-              <span class="select-all">tanimtanimhossain44@gmail.com</span>
-            </li>
+          <ul class="space-y-2 text-[13px] text-gray-400">
+            <li><button onclick="showStandalonePage('terms', false)" class="hover:text-white transition bg-transparent border-none p-0 cursor-pointer">Terms of Service</button></li>
+            <li><button onclick="showStandalonePage('privacy', false)" class="hover:text-white transition bg-transparent border-none p-0 cursor-pointer">Privacy Policy</button></li>
+            <li><button onclick="showStandalonePage('refund', false)" class="hover:text-white transition bg-transparent border-none p-0 cursor-pointer">Refund Policy</button></li>
           </ul>
         </div>
 
       </div>
 
-      <div class="border-t border-gray-800/40 pt-6 flex flex-col sm:flex-row items-center justify-between text-[12px] text-gray-500 gap-4">
-        <div>@ 2026 - All rights Reserved by Zubaygames.</div>
-        <div class="flex space-x-6">
-          <button onclick="showStandalonePage('terms', false)" class="hover:text-gray-400 transition cursor-pointer bg-transparent border-none p-0 text-[12px]">Terms Of Service</button>
-          <button onclick="showStandalonePage('privacy', false)" class="hover:text-gray-400 transition cursor-pointer bg-transparent border-none p-0 text-[12px]">Privacy Policy</button>
-          <button onclick="showStandalonePage('refund', false)" class="hover:text-gray-400 transition cursor-pointer bg-transparent border-none p-0 text-[12px]">Refund Policy</button>
-        </div>
+      <div class="border-t border-gray-900 pt-8 text-center text-xs text-gray-600 font-medium tracking-wide">
+        © 2026 ZUBAYGAMES. Built securely for global gaming communities. All rights reserved.
       </div>
 
     </div>
   </footer>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const savedUser = localStorage.getItem("isLoggedIn");
-      const savedName = localStorage.getItem("userName");
-      const savedPic = localStorage.getItem("userPic");
-
-      if (savedUser === "true") {
-        unlockStore(savedName, savedPic, false);
-      } else {
-        openModal();
-      }
-    });
-
-    function isUserLoggedIn() {
-      return localStorage.getItem("isLoggedIn") === "true";
-    }
-
-    function handleGameClick(redirectUrl) {
-      if (isUserLoggedIn()) {
-        window.location.href = redirectUrl;
-      } else {
-        openModal();
+    function smoothScrollTo(id) {
+      const element = document.getElementById(id);
+      if(element) {
+        showStorefrontView();
+        element.scrollIntoView({ behavior: 'smooth' });
       }
     }
-
-    // Dynamic Central Router Control for All Views
-    function showStandalonePage(viewType, shouldScroll = true) {
+    function showStandalonePage(pageId, scrollUp = true) {
       document.getElementById('main-site').classList.add('hidden');
-      const standaloneWrapper = document.getElementById('standalone-page');
-      standaloneWrapper.classList.remove('hidden');
-
-      // Sab sub-views ko check karke hidden list me daalo
-      const views = ['info', 'about', 'contact', 'terms', 'privacy', 'refund'];
-      views.forEach(v => {
-        const block = document.getElementById(`standalone-${v}-content`);
-        if (block) block.classList.add('hidden');
-      });
-
-      // Target current active block show karo
-      const currentActiveBlock = document.getElementById(`standalone-${viewType}-content`);
-      if (currentActiveBlock) currentActiveBlock.classList.remove('hidden');
-
-      // Update Dynamic Meta Title headers
-      const titles = {
-        about: "About Founder - ZubayGames",
-        contact: "Contact Us - ZubayGames",
-        info: "Store Information - ZubayGames",
-        terms: "Terms of Service - ZubayGames",
-        privacy: "Privacy Policy - ZubayGames",
-        refund: "Refund Policy - ZubayGames"
-      };
-      document.title = titles[viewType] || "ZubayGames";
+      document.getElementById('standalone-page').classList.remove('hidden');
       
-      // Control Scroll Jump Behavior Fixes
-      if (shouldScroll) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        window.scrollTo({ top: 0, behavior: 'auto' });
-      }
+      ['info','about','contact','terms','privacy','refund'].forEach(id => {
+        document.getElementById(`standalone-${id}-content`)?.classList.add('hidden');
+      });
+      
+      const targetContent = document.getElementById(`standalone-${pageId}-content`);
+      if(targetContent) targetContent.classList.remove('hidden');
+      if(scrollUp) window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-
     function showStorefrontView() {
       document.getElementById('standalone-page').classList.add('hidden');
       document.getElementById('main-site').classList.remove('hidden');
-      document.title = "ZubayGames - Premium Game Store";
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-
-    function handleUnderConstructionLink(featureName) {
-      alert("⚙️ " + featureName + " section setup is currently under maintenance. Stay tuned!");
+    function handleGameClick(filename) {
+      console.log("Navigating to checkout page: " + filename);
+      window.location.href = filename;
     }
-
-    function smoothScrollTo(elementId) {
-      showStorefrontView();
-      setTimeout(() => {
-        const targetSection = document.getElementById(elementId);
-        const header = document.getElementById('main-header');
-        if (targetSection && header) {
-          const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - header.offsetHeight - 16;
-          window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-        }
-      }, 50);
+    function handleUnderConstructionLink(name) {
+      alert(name + " section is under active construction.");
     }
-
-    // Auth Overlay Logic
-    function openModal() {
-      document.getElementById('login-modal').classList.remove('hidden');
-      document.getElementById('main-site').classList.add('blur-md');
-      document.getElementById('standalone-page').classList.add('blur-md');
-      document.getElementById('main-body').classList.add('overflow-hidden');
-    }
-
     function closeModalAndAllowGuest() {
       document.getElementById('login-modal').classList.add('hidden');
-      document.getElementById('main-site').classList.remove('blur-md');
-      document.getElementById('standalone-page').classList.remove('blur-md');
-      document.getElementById('main-body').classList.remove('overflow-hidden');
-
-      document.getElementById('negative-signin-btn').classList.remove('hidden');
-      document.getElementById('user-profile-wrapper').classList.add('hidden');
     }
-
-    function unlockStore(name, pictureSrc, saveToStorage = true) {
-      document.getElementById('login-modal').classList.add('hidden');
-      document.getElementById('main-site').classList.remove('blur-md');
-      document.getElementById('standalone-page').classList.remove('blur-md');
-      document.getElementById('main-body').classList.remove('overflow-hidden');
-
-      document.getElementById('negative-signin-btn').classList.add('hidden');
-      document.getElementById('user-profile-wrapper').classList.remove('hidden');
-
-      if(name) document.getElementById('user-name').innerText = name;
-      if(pictureSrc) document.getElementById('user-img').src = pictureSrc;
-
-      if(saveToStorage) {
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("userName", name || "Gamer");
-        localStorage.setItem("userPic", pictureSrc || "");
-      }
-    }
-
-    function handleCredentialResponse(response) {
-      const payload = JSON.parse(atob(response.credential.split('.')[1]));
-      unlockStore(payload.name, payload.picture);
-    }
-
-    function toggleDropdown() {
-      document.getElementById('profile-dropdown').classList.toggle('hidden');
-    }
-
-    window.addEventListener('click', function(e) {
-      const btn = document.getElementById('user-profile-btn');
-      const dropdown = document.getElementById('profile-dropdown');
-      if (btn && !btn.contains(e.target) && !dropdown.contains(e.target)) {
-        dropdown.classList.add('hidden');
-      }
-    });
-
-    function logout() {
-      localStorage.removeItem("isLoggedIn");
-      localStorage.removeItem("userName");
-      localStorage.removeItem("userPic");
-      window.location.reload();
+    function openModal() {
+      document.getElementById('login-modal').classList.remove('hidden');
     }
   </script>
-
-  <style>
-    .animate-fade-in {
-      animation: fadeIn 0.5s ease-out forwards;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
 </body>
 </html>
